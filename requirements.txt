@@ -1,0 +1,13 @@
+requests
+halo
+validators
+art
+termcolor
+python-whois
+colorama
+icmplib
+geoip2
+python-nmap
+beautifulsoup4
+mail-parser
+dnspython
