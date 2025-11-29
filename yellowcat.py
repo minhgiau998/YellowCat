@@ -1,7 +1,5 @@
 import os
-import requests
 import platform
-from halo import Halo
 import validators
 from art import *
 from termcolor import colored
@@ -16,7 +14,8 @@ from plugins.http_header import print_http_header_info
 from plugins.email_header import print_email_header_info
 from plugins.sqlmap import print_sqlmap_info
 from plugins.subdomain import print_subdomain_info
-from colorama import Fore, Style, init
+from plugins.robots import print_robots_info
+from colorama import Fore, Style
 
 version = "version 1.0.0"
 
@@ -70,6 +69,16 @@ def sqlmap(params):
     print_sqlmap_info(params)
     print()
 
+def subdomain(params):
+    print()
+    print_subdomain_info(params)
+    print()
+
+def robots(params):
+    print()
+    print_robots_info(params)
+    print()
+
 def print_menu():
     print(colored("[01] Whois", "cyan"))
     print(colored("[02] Traceroute", "cyan"))
@@ -82,6 +91,7 @@ def print_menu():
     print(colored("[09] Email Header", "cyan"))
     print(colored("[10] SQLmap", "cyan"))
     print(colored("[11] Subdomain Scanner", "cyan"))
+    print(colored("[12] Robots.txt Scanner", "cyan"))
     print(colored("[99] Exit", "cyan"))
     print()
 
@@ -100,9 +110,11 @@ def main():
             os.system("clear")
         elif platform.system() == "Windows":
             os.system("cls")
+        else:
+            os.system("clear")
 
         cat_art = f'''
-    |\__/,|   (`\\
+    |\\__/,|   (`\\
   _.|o o  |_   ) )
 -(((---(((-------- {Fore.GREEN}{version}
         '''
@@ -182,7 +194,14 @@ def main():
         elif choice == "11":
             domain = input("Enter Domain (e.g., google.com): ")
             if validators.domain(domain):
-                print_subdomain_info(domain)
+                subdomain(domain)
+            else:
+                print(colored("Something wrong with input!", "red"))
+            input("Press [Enter] to continue...")
+        elif choice == "12":
+            domain = input("Enter Domain (e.g., google.com): ")
+            if validators.domain(domain):
+                robots(domain)
             else:
                 print(colored("Something wrong with input!", "red"))
             input("Press [Enter] to continue...")

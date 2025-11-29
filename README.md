@@ -37,6 +37,7 @@
 [08] HTTP Header
 [09] Email Header
 [11] Subdomain Scanner
+[12] Robots.txt Scanner
 [99] Exit
 
 Enter your choice [1-99]:
@@ -55,6 +56,7 @@ Enter your choice [1-99]:
 - **Email Header**: Analyzes email headers to determine the origin, path, and other related information, helping to detect phishing attacks and email security issues.
 - **SQLmap**: Automates the process of detecting and exploiting SQL injection vulnerabilities in web applications.
 - **Subdomain Scanner**: Identifies subdomains associated with a domain, helping to discover hidden resources and potential security vulnerabilities.
+- **Robots.txt Scanner**: Analyzes the robots.txt file of a website to identify disallowed paths and potential security vulnerabilities.
 
 ## Installation
 
