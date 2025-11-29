@@ -15,6 +15,7 @@ from plugins.page_links import print_page_links_info
 from plugins.http_header import print_http_header_info
 from plugins.email_header import print_email_header_info
 from plugins.sqlmap import print_sqlmap_info
+from plugins.subdomain import print_subdomain_info
 from colorama import Fore, Style, init
 
 version = "version 1.0.0"
@@ -80,6 +81,7 @@ def print_menu():
     print(colored("[08] HTTP Header", "cyan"))
     print(colored("[09] Email Header", "cyan"))
     print(colored("[10] SQLmap", "cyan"))
+    print(colored("[11] Subdomain Scanner", "cyan"))
     print(colored("[99] Exit", "cyan"))
     print()
 
@@ -174,6 +176,13 @@ def main():
             params = input("Enter URL for lookup: ")
             if validators.url(params):
                 sqlmap(params)
+            else:
+                print(colored("Something wrong with input!", "red"))
+            input("Press [Enter] to continue...")
+        elif choice == "11":
+            domain = input("Enter Domain (e.g., google.com): ")
+            if validators.domain(domain):
+                print_subdomain_info(domain)
             else:
                 print(colored("Something wrong with input!", "red"))
             input("Press [Enter] to continue...")
