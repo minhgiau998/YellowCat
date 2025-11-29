@@ -38,6 +38,7 @@
 [09] Email Header
 [11] Subdomain Scanner
 [12] Robots.txt Scanner
+[13] CMS Detector
 [99] Exit
 
 Enter your choice [1-99]:
@@ -57,6 +58,7 @@ Enter your choice [1-99]:
 - **SQLmap**: Automates the process of detecting and exploiting SQL injection vulnerabilities in web applications.
 - **Subdomain Scanner**: Identifies subdomains associated with a domain, helping to discover hidden resources and potential security vulnerabilities.
 - **Robots.txt Scanner**: Analyzes the robots.txt file of a website to identify disallowed paths and potential security vulnerabilities.
+- **CMS Detector**: Identifies the content management system (CMS) used by a website, helping to identify potential security vulnerabilities and weaknesses.
 
 ## Installation
 
