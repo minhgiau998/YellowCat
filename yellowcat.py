@@ -16,6 +16,7 @@ from plugins.sqlmap import print_sqlmap_info
 from plugins.subdomain import print_subdomain_info
 from plugins.robots import print_robots_info
 from plugins.cms_detect import print_cms_info
+from plugins.dir_fuzz import print_dir_fuzz_info
 from colorama import Fore, Style
 
 version = "version 1.0.0"
@@ -85,6 +86,11 @@ def cms_detect(params):
     print_cms_info(params)
     print()
 
+def dir_fuzz(params):
+    print()
+    print_dir_fuzz_info(params)
+    print()
+
 def print_menu():
     print(colored("[01] Whois", "cyan"))
     print(colored("[02] Traceroute", "cyan"))
@@ -99,6 +105,7 @@ def print_menu():
     print(colored("[11] Subdomain Scanner", "cyan"))
     print(colored("[12] Robots.txt Scanner", "cyan"))
     print(colored("[13] CMS Detector", "cyan"))
+    print(colored("[14] Directory Fuzzer", "cyan"))
     print(colored("[99] Exit", "cyan"))
     print()
 
@@ -120,10 +127,10 @@ def main():
         else:
             os.system("clear")
 
-        cat_art = f'''
+        cat_art = '''
     |\\__/,|   (`\\
   _.|o o  |_   ) )
--(((---(((-------- {Fore.GREEN}{version}
+-(((---(((--------
         '''
 
         # Print some badass ascii art header here !
@@ -216,6 +223,13 @@ def main():
             domain = input("Enter Domain (e.g., google.com): ")
             if validators.domain(domain):
                 cms_detect(domain)
+            else:
+                print(colored("Something wrong with input!", "red"))
+            input("Press [Enter] to continue...")
+        elif choice == "14":
+            url = input("Enter URL (e.g. example.com): ")
+            if validators.url("http://" + url) or validators.url(url):
+                dir_fuzz(url)
             else:
                 print(colored("Something wrong with input!", "red"))
             input("Press [Enter] to continue...")

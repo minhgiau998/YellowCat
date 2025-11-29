@@ -12,9 +12,6 @@
   <a href="https://github.com/minhgiau998/YellowCat/releases">
     <img src="https://img.shields.io/github/release/minhgiau998/YellowCat.svg">
   </a>
-  <a href="https://pypi.org/project/yellowcat/">
-    <img src="https://img.shields.io/badge/pypi-@yellowcat-red.svg?style=flat-square" alt="pypi">
-  </a>
   <a href="https://github.com/minhgiau998/YellowCat/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/github/issues-closed-raw/minhgiau998/YellowCat.svg">
   </a>
@@ -22,10 +19,10 @@
 
 ## Screenshots
 
-```
+```text
     |\__/,|   (`\
   _.|o o  |_   ) )
--(((---(((-------- version 1.0.0
+-(((---(((--------
 
 [01] Whois
 [02] Traceroute
@@ -36,9 +33,11 @@
 [07] Page Links
 [08] HTTP Header
 [09] Email Header
+[10] SQLmap
 [11] Subdomain Scanner
 [12] Robots.txt Scanner
 [13] CMS Detector
+[14] Directory Fuzzer
 [99] Exit
 
 Enter your choice [1-99]:
@@ -56,9 +55,25 @@ Enter your choice [1-99]:
 - **HTTP Header**: Analyzes HTTP headers from requests and responses between the client and server, providing information about the server, connection status, and security settings.
 - **Email Header**: Analyzes email headers to determine the origin, path, and other related information, helping to detect phishing attacks and email security issues.
 - **SQLmap**: Automates the process of detecting and exploiting SQL injection vulnerabilities in web applications.
-- **Subdomain Scanner**: Identifies subdomains associated with a domain, helping to discover hidden resources and potential security vulnerabilities.
-- **Robots.txt Scanner**: Analyzes the robots.txt file of a website to identify disallowed paths and potential security vulnerabilities.
-- **CMS Detector**: Identifies the content management system (CMS) used by a website, helping to identify potential security vulnerabilities and weaknesses.
+- **Subdomain Scanner**: Identifies subdomains associated with a domain using passive sources (crt.sh).
+- **Robots.txt Scanner**: Analyzes the robots.txt file to identify hidden paths and disallowed directories.
+- **CMS Detector**: Identifies the technology stack (WordPress, Joomla, Drupal) used by a website.
+- **Directory Fuzzer**: Identifies hidden directories and files using a wordlist.
+
+## Roadmap
+
+I am actively working on making YellowCat the ultimate reconnaissance tool. Here is what we have planned for future releases:
+
+- [x] **Directory Fuzzing (DirBuster)**: Implement a brute-force module to find hidden directories (e.g., `/admin`, `/backup`, `/config`) using common wordlists.
+- [ ] **WAF Detection**: Add capability to detect Web Application Firewalls (Cloudflare, Akamai, AWS WAF) to understand target defenses.
+- [ ] **Multi-threaded Port Scanning**: Upgrade the current port scanner to use Python threading for significantly faster execution speeds.
+- [ ] **CVE Lookup**: Integrate a vulnerability database lookup to search for known CVEs based on detected service versions.
+- [ ] **Report Generation**: Add functionality to export scan results to HTML, PDF, or JSON formats for documentation.
+- [ ] **Shodan Integration**: Add API support for Shodan to perform passive IP analysis without direct interaction.
+- [ ] **Password Bruteforcing**: Implement a password cracking module to attempt to crack weak passwords using common wordlists.
+- [ ] **Advanced Fingerprinting**: Enhance the fingerprinting capabilities to identify more sophisticated web technologies and frameworks.
+- [ ] **Custom Payloads**: Allow users to define custom payloads for specific targets or scenarios.
+- [ ] **Custom Malware Payloads**: Implement a module to analyze custom malware samples for indicators of compromise (IoCs).
 
 ## Installation
 
@@ -82,8 +97,14 @@ py -m venv venv
 
 Activate the virtual environment:
 
+*Windows:*
 ```bash
-source venv/Scripts/activate
+.\venv\Scripts\activate
+```
+
+*Linux/Mac:*
+```bash
+source venv/bin/activate
 ```
 
 Install library dependencies:
