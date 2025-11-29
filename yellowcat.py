@@ -14,6 +14,7 @@ from plugins.port_scan import print_port_scan_info
 from plugins.page_links import print_page_links_info
 from plugins.http_header import print_http_header_info
 from plugins.email_header import print_email_header_info
+from plugins.sqlmap import print_sqlmap_info
 from colorama import Fore, Style, init
 
 version = "version 1.0.0"
@@ -32,7 +33,7 @@ def dnslookup(params):
     print()
     print_dns_lookup_info(params)
     print()
-    
+
 def reversedns(params):
     print()
     print_reverse_dns_lookup_info(params)
@@ -40,7 +41,7 @@ def reversedns(params):
 
 def geoip(params):
     print()
-    print_geoip_lookup_info(params) 
+    print_geoip_lookup_info(params)
     print()
 
 def portscan(params):
@@ -62,8 +63,13 @@ def emailheader():
     print()
     print_email_header_info()
     print()
-      
-def print_menu():      
+
+def sqlmap(params):
+    print()
+    print_sqlmap_info(params)
+    print()
+
+def print_menu():
     print(colored("[01] Whois", "cyan"))
     print(colored("[02] Traceroute", "cyan"))
     print(colored("[03] DNS Lookup", "cyan"))
@@ -73,6 +79,7 @@ def print_menu():
     print(colored("[07] Page Links", "cyan"))
     print(colored("[08] HTTP Header", "cyan"))
     print(colored("[09] Email Header", "cyan"))
+    print(colored("[10] SQLmap", "cyan"))
     print(colored("[99] Exit", "cyan"))
     print()
 
@@ -102,7 +109,7 @@ def main():
         print(Fore.LIGHTYELLOW_EX + cat_art + Style.RESET_ALL)
 
         # Displays menu and choose options
-        print_menu()    
+        print_menu()
         choice = input("Enter your choice [1-99]: ")
         if choice == "1":
             params = input("Enter IP or Domain for lookup: ")
@@ -132,7 +139,7 @@ def main():
             else:
                 print(colored("Something wrong with input!", "red"))
             input("Press [Enter] to continue...")
-        elif choice == "5": 
+        elif choice == "5":
             params = input("Enter IP for lookup: ")
             if validators.ipv4(params):
                 geoip(params)
@@ -163,10 +170,17 @@ def main():
         elif choice == "9":
             emailheader()
             input("Press [Enter] to continue...")
+        elif choice == "10":
+            params = input("Enter URL for lookup: ")
+            if validators.url(params):
+                sqlmap(params)
+            else:
+                print(colored("Something wrong with input!", "red"))
+            input("Press [Enter] to continue...")
         elif choice == "99":
             loop=False
         else:
             print(colored("Wrong option selection. Enter any key to try again..", "red"))
-        
+
 if __name__ == "__main__":
     main()

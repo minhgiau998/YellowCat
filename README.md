@@ -36,6 +36,7 @@
 [07] Page Links
 [08] HTTP Header
 [09] Email Header
+[10] SQLmap
 [99] Exit
 
 Enter your choice [1-99]:
@@ -52,16 +53,9 @@ Enter your choice [1-99]:
 - **Page Links**: Collects all links on a specific webpage, helping to identify the structure and related resources of the website.
 - **HTTP Header**: Analyzes HTTP headers from requests and responses between the client and server, providing information about the server, connection status, and security settings.
 - **Email Header**: Analyzes email headers to determine the origin, path, and other related information, helping to detect phishing attacks and email security issues.
+- **SQLmap**: Automates the process of detecting and exploiting SQL injection vulnerabilities in web applications.
 
 ## Installation
-
-Install the project with Pypi:
-
-```bash
-pip3 install yellowcat
-```
-
-## Run Locally
 
 Clone the project:
 
@@ -75,16 +69,28 @@ Go to the project directory:
 cd YellowCat
 ```
 
+Create a virtual environment:
+
+```bash
+py -m venv venv
+```
+
+Activate the virtual environment:
+
+```bash
+source venv/Scripts/activate
+```
+
 Install library dependencies:
 
 ```bash
-sudo pip3 install -r requirements.txt
+py -m pip install -r requirements.txt
 ```
 
 Start the project:
 
 ```bash
-sudo python3 yellowcat.py
+py yellowcat.py
 ```
 
 ## Demo

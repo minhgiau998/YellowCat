@@ -11,3 +11,4 @@ python-nmap
 beautifulsoup4
 mail-parser
 dnspython
+sqlmap
